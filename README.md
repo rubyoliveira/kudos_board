@@ -1,9 +1,7 @@
 # kudos_board
-NOTE` Use this template to initialize the contents of a README.md file for your application. As you work on your assignment over the course of the week, update the required or stretch features lists to indicate which features you have completed by changing `[ ]` to `[x]`. (🚫 Remove this paragraph before submitting your assignment.)
-
 ## Unit Assignment: Kudos Board
 
-Submitted by: **NAME**
+Submitted by: **Ruby Oliveira**
 
 Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
 
@@ -24,25 +22,17 @@ Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
     - [x] Boards should have a title, category, and author (optional).
   - [x] User can delete boards.
   
-- [ ] **Board Page**
-  - [ ] Displays a list of all cards for a board.
-    -  [ ] Each card features a text message.
-    -  [ ] Each card features a gif found using the [GIPHY API](https://developers.giphy.com/docs/api/).
-    -  [ ] Users can optionally sign the card as the author.  
--   [ ] Cards can be upvoted.
--   [ ] Cards can be deleted.
+- [x] **Board Page**
+  - [x] Displays a list of all cards for a board.
+    -  [x] Each card features a text message.
+    -  [x] Each card features a gif found using the [GIPHY API](https://developers.giphy.com/docs/api/).
+    -  [x] Users can optionally sign the card as the author.  
+-   [x] Cards can be upvoted.
+-   [x] Cards can be deleted.
 
 
 #### STRETCH FEATURES
 
-
-- [ ] **User Accounts**
-  - [ ] Users should be able to log in with a username and password.
-  - [ ] Users should be able to sign up for a new account.
-  - [ ]  Boards and cards should be associated with a user.
-    - [ ]  Anonymous cards or cards by guest users should still be allowed.
-  - [ ] Add a new filter option on the home page to display only the current user's boards.
-  - [ ] Allow boards to be deleted only if they are owned by the user.
 - [ ] **Deployment**
   - [ ] Website is deployed via Render.
 - [ ] **Comments**
@@ -51,23 +41,21 @@ Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
-
-`ADD_EMBEDDED_CODE_HERE`
+<div style="position: relative; padding-bottom: 64.67065868263472%; height: 0;"><iframe src="https://www.loom.com/embed/9cd2fd13efca49b0885737d96e855440?sid=1e4d6320-b7dc-43c3-8bd8-e4a21450aa3e" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ### Reflection
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+Sort of, I felt a disconnect when actually coding the backend from our tutorials, I also feel many were rushed and didn't have enough time to finish this completely. But the topics discussed were helpful I just wish we had more tutorials and videos to help guide us.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-Add your response here
+I think I would've started on the backend earlier with what I knew about prisma, since the backend took me a while to set up and understand how to work with it. I think if I realized the labs could guide me through the beginning steps I could've started a lot earlier and been able to add comments, since deployment wasn't working since we had limited times to deploy.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+I think I would like to implement more unique css styling and making the website more my own and adding some fun features.
 
 ### Open-source libraries used
 
@@ -76,3 +64,5 @@ Add your response here
 ### Shout out
 
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+
+Shout out to Tessa and Axel for really helping me out with figuring out the backend since I was quite confused at first and am really thankful for their support and help. Also a thank you to Sammy the instructor who always is very helpful when needing assitance in something he also showed me how to automatically update my backend with nodemon.
