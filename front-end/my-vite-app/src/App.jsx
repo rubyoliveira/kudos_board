@@ -80,7 +80,7 @@ function App() {
       <Routes>
         <Route path="/" element={
           <>
-            <Header unFilter={fetchCards} filter={filterBoards} searchBoards={searchBoards} fetchCards={fetchCards} />
+            <Header unFilter={fetchCards} filter={filterBoards} searchBoards={searchBoards} fetchCards={fetchCards}/>
             <button onClick={displayModal} className="buttons">Create A New Board</button>
             <div className="cards">
               {cards.map(card => (
@@ -99,7 +99,7 @@ function App() {
             {open && <Modal closeModal={handleClose} fetchCards={fetchCards} />}
           </>
         } />
-        <Route path='/threads/:cardId' element={<Threads boardId = {cardId} />} />
+        <Route path='/threads/:cardId' element={<Threads/>} />
       </Routes>
     </BrowserRouter>
   );

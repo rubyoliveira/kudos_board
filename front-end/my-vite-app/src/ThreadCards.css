@@ -56,12 +56,13 @@
     flex-wrap: break-word;
     gap: 5px;
     margin: 5px;
-    width: 250px;
+    width: 300px;
     border-radius: 5px;
     text-align: center;
     transform: scale(1);
     transition: box-shadow 0.3s ease;
     transition: transform 0.3s ease;
+    padding: 10px;
 }
 
 .gif{

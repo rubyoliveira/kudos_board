@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './Cards.css';
 import { Link } from 'react-router-dom';
 
-function Cards({ title, category, image, id, fetchCards, getCardId }) {
+function Cards({ title, category, image, id, fetchCards, getCardId}) {
 
     const deleteBoard = async () => {
         fetch(`${import.meta.env.VITE_BACKEND_ADDRESS}/boards/${id}/delete`, {
@@ -25,10 +25,9 @@ function Cards({ title, category, image, id, fetchCards, getCardId }) {
         });
     };
 
-    
+
   const handleViewBoard = () => {
     getCardId(id);  // Set the card ID when the button is clicked
-
   };
 
   return (
