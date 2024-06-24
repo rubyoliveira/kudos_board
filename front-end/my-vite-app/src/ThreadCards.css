@@ -63,3 +63,7 @@
     transition: box-shadow 0.3s ease;
     transition: transform 0.3s ease;
 }
+
+.gif{
+    width: 90%;
+}

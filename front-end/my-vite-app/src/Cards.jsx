@@ -4,20 +4,31 @@ import { Link } from 'react-router-dom';
 
 function Cards({ title, category, image, id, fetchCards, getCardId }) {
 
-  const deleteBoard = async () => {
-    fetch(`${import.meta.env.VITE_BACKEND_ADDRESS}/boards/${id}/delete`, {
-      method: "DELETE",
-    })
-    .then(() => {
-      fetchCards();  // Refresh the cards list after deletion
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-  };
+    const deleteBoard = async () => {
+        fetch(`${import.meta.env.VITE_BACKEND_ADDRESS}/boards/${id}/delete`, {
+            method: "DELETE",
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(data => {
+                    throw new Error(data.message || 'Failed to delete board.');
+                });
+            }
+            return response.json();
+        })
+        .then(() => {
+            fetchCards();  
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+            alert(error.message);
+        });
+    };
 
+    
   const handleViewBoard = () => {
     getCardId(id);  // Set the card ID when the button is clicked
+
   };
 
   return (

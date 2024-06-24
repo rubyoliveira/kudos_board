@@ -5,7 +5,8 @@ import ThreadModal from './ThreadModal.jsx'
 import ThreadCards from './ThreadCards.jsx'
 import { useParams } from 'react-router-dom';
 
-function Threads({boardId}) {
+function Threads() {
+    const { cardId } = useParams();
     const [open, setOpen] = useState(false);
     const [threads, setThreads] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -13,7 +14,7 @@ function Threads({boardId}) {
 
     const displayModal = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const id = boardId
+    const id = cardId
 
     useEffect(() => {
         fetchThreads(id)

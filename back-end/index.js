@@ -49,12 +49,24 @@ app.get('/boards', async (req, res) => {
   });
   
   app.delete('/boards/:id/delete', async (req, res) => {
-    const { id } = req.params
-    const deletedCard = await prisma.cards.delete({
-      where: { id: parseInt(id) }
-    })
-    res.json(deletedCard)
-  });
+    const { id } = req.params;
+
+    try {
+        const result = await prisma.$transaction(async (prisma) => {
+            await prisma.threads.deleteMany({
+                where: { cardId: parseInt(id) }
+            });
+            return await prisma.cards.delete({
+                where: { id: parseInt(id) }
+            });
+        });
+        res.json(result);
+    } catch (error) {
+        console.error("Error deleting card and its threads:", error);
+        res.status(500).json({ message: "Error deleting card and its threads" });
+    }
+});
+
 
   app.get('/boards/:title/search', async (req, res) => {
     const { title } = req.params;

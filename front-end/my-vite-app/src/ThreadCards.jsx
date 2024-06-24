@@ -34,12 +34,13 @@ function ThreadCards({ title, description, gif, owner, votes, id, fetchThreads, 
         console.error('Error upvoting:', error);
     });
 };
+console.log(gif)
 
   return (
     <>
       <div className="thread">
             <h3 className="title-thread">{title}</h3>
-            <img className = "gif" src = {gif} alt = "n/a"></img>
+            <img className = "gif" src = {gif} alt = "n/a"></img> 
             <p className="description">{description}</p>
             <p className="owner">{owner}</p>
             <button className="upvote" onClick = {handleUpvote}>upvote: {vote}</button>
