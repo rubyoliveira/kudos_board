@@ -99,7 +99,7 @@ function App() {
             {open && <Modal closeModal={handleClose} fetchCards={fetchCards} />}
           </>
         } />
-        <Route path="/threads" element={<Threads boardId={cardId} />} />
+        <Route path='/threads/:cardId' element={<Threads boardId = {cardId} />} />
       </Routes>
     </BrowserRouter>
   );

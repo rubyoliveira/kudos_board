@@ -18,7 +18,6 @@ function Cards({ title, category, image, id, fetchCards, getCardId }) {
 
   const handleViewBoard = () => {
     getCardId(id);  // Set the card ID when the button is clicked
-    console.log(id);
   };
 
   return (
@@ -28,12 +27,13 @@ function Cards({ title, category, image, id, fetchCards, getCardId }) {
         <h3 className="card-title">{title}</h3>
         <p className="category">{category}</p>
         <div>
-          <Link to='/threads'>
+          <Link to = {`/threads/${id}`}>
             <button className="view-button" onClick={handleViewBoard}>view board</button>
           </Link>
           <button className="delete-button" onClick={deleteBoard}>delete board</button>
         </div>
-        :q
+      </div>
+    </>
   );
 }
 

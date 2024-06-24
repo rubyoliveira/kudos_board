@@ -65,35 +65,60 @@ app.get('/boards', async (req, res) => {
   });
 
   app.get('/threads/:cardId', async (req, res) => {
-    const {card} = req.params
-    const cards = await prisma.threads.findMany(
-        {where: {id: card}}
-    )
-    res.json(cards)
+    const { cardId } = req.params; 
+    const threads = await prisma.threads.findMany({
+        where: { cardId: parseInt(cardId) }  
+    });
+    res.json(threads);
   });
 
   app.post('/threads/:cardId', async (req, res) => {
     if (!req.body.title || !req.body.description) {
-        return res.status(400).send('Name and description are required.')
-      }
-      const { cardId } = req.params
-      const { title, description, gif, owner } = req.body
-      try {
-        console.log("creating new card")
+        return res.status(400).send('Title and description are required.');
+    }
+    const { cardId } = req.params;
+    const { title, description, gif, owner } = req.body;
+    try {
         const newThread = await prisma.threads.create({
-          data: {
-            title,
-            description,
-            gif, 
-            owner,
-            votes: 0,
-            cardId: parseInt(cardId)
-          }
+            data: {
+                title,
+                description,
+                gif,
+                owner,
+                votes: 0,
+                cardId: parseInt(cardId)  // Ensure cardId is parsed as an integer
+            }
         });
         res.json(newThread);
-      } catch (error) {
+    } catch (error) {
         console.error(error);
-        res.status(500).send('Error creating card');
-      }
+        res.status(500).send('Error creating thread');
+    }
+});
+
+app.delete('/threads/:cardId/:id/delete', async (req, res) => {
+    const { id } = req.params
+    const deletedCard = await prisma.threads.delete({
+      where: { id: parseInt(id) }
+    })
+    res.json(deletedCard)
+  });
+
+  app.patch('/threads/:cardId/:id/upvote', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const updatedThread = await prisma.threads.update({
+            where: { id: parseInt(id) },
+            data: {
+                votes: {
+                    increment: 1
+                }
+            }
+        });
+        res.json(updatedThread);
+    } catch (error) {
+        console.error("Error updating thread votes:", error);
+        res.status(500).send("Failed to update votes");
+    }
 });
   

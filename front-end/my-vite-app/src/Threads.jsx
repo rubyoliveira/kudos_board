@@ -2,38 +2,42 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './Threads.css';
 import ThreadModal from './ThreadModal.jsx'
+import ThreadCards from './ThreadCards.jsx'
+import { useParams } from 'react-router-dom';
 
-function Threads({ boardId }) {
+function Threads({boardId}) {
     const [open, setOpen] = useState(false);
-    const [cards, setCards] = useState([]);
+    const [threads, setThreads] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
 
     const displayModal = () => setOpen(true);
     const handleClose = () => setOpen(false);
-
+    const id = boardId
 
     useEffect(() => {
-        if (boardId) {
-            fetchCards();
-        }
-    }, [boardId]);
+        fetchThreads(id)
+    }, [id]);
 
-    const fetchCards = () => {
-        fetch(`${import.meta.env.VITE_BACKEND_ADDRESS}/threads/${boardId}`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                setCards(data);
-            })
-            .catch(error => {
-                console.error('Error fetching cards:', error);
-            });
-    };
+    const fetchThreads = (id) => {
+        fetch(`${import.meta.env.VITE_BACKEND_ADDRESS}/threads/${id}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Failed to fetch');
+          }
+          return response.json();
+        })
+        .then(data => {
+          setThreads(data);
+          setLoading(false);
+        })
+        .catch(err => {
+          console.error("Error fetching threads:", err);
+          setError('Failed to load threads');
+          setLoading(false);
+        });
+    }
 
-    console.log('CARDS IN THREADS', cards);
     return (
         <>
             <header>
@@ -41,16 +45,22 @@ function Threads({ boardId }) {
                 <button className="create-button" onClick={displayModal}>add board</button>
                 <Link to='/'><button className="home-button">go home</button></Link>
             </header>
-            {cards.map(card => (
-                <div className="thread" key={card.id}>
-                    <h3 className="title">{card.title}</h3>
-                    <p className="description">{card.description}</p>
-                    <p className="owner">{card.owner}</p>
-                    <button className="upvote">upvote: {card.votes}</button>
-                    <button className="delete-card">delete card</button>
-                </div>
-            ))}
-            {open && <ThreadModal closeModal={handleClose} />}
+            <div className = "cards">
+                {threads.map(card => (
+                <ThreadCards 
+                        key ={card.id} 
+                        id = {card.id}
+                        title = {card.title}
+                        gif = {card.gif}
+                        description = {card.description}
+                        owner = {card.owner}
+                        votes = {card.votes}
+                        fetchThreads= {fetchThreads}
+                        cardId = {id}
+                    />
+                ))}
+            </div>
+            {open && <ThreadModal closeModal={handleClose} cardId = {id} fetchThreads = {fetchThreads}/>}
         </>
     )
 }

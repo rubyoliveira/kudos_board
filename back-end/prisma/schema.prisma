@@ -14,10 +14,10 @@ datasource db {
 }
 
 model cards {
-  id Int @id @default(autoincrement())
-  title String
+  id      Int      @id @default(autoincrement())
+  title   String
   category String
-  author String
+  author  String
   threads threads[]
 }
 
@@ -25,9 +25,9 @@ model threads {
   id          Int    @id @default(autoincrement())
   title       String
   description String
-  gif         String
-  card        cards  @relation(fields: [cardId], references: [id])
-  votes       Int    @default(0)
+  gif         String?
   owner       String
-  cardId      Int    @default(1) // Make sure this card ID exists or is appropriate
+  votes       Int    @default(0)
+  cardId      Int
+  card        cards  @relation(fields: [cardId], references: [id])
 }

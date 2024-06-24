@@ -1,0 +1,65 @@
+.thread:hover{
+    background-color: rgba(181, 170, 255, 0.566);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.564);
+    transform: scale(1.01);
+}
+
+.delete-card{
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 10px;
+    margin: 5px;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    background-color: rgba(183, 172, 242, 0.616); 
+}
+
+.delete-card:hover{
+    background-color: rgba(146, 134, 239, 0.6);
+    color: rgb(0, 0, 0);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.255);
+    transform: scale(1.1);
+}
+
+
+.upvote{
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 10px;
+    margin: 5px;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    background-color: rgba(183, 172, 242, 0.616); 
+}
+
+.upvote:hover{
+    background-color: rgba(146, 134, 239, 0.6);
+    color: rgb(0, 0, 0);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.255);
+    transform: scale(1.1);
+}
+
+
+.thread{
+    background-color: rgba(196, 188, 247, 0.566);
+    display: block;
+    border: 1px rgb(2, 75, 48);
+    box-shadow: 10px 10px 5px rgba(0, 22, 14, 0.1);
+    flex-wrap: break-word;
+    gap: 5px;
+    margin: 5px;
+    width: 250px;
+    border-radius: 5px;
+    text-align: center;
+    transform: scale(1);
+    transition: box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
+}

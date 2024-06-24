@@ -16,6 +16,7 @@ const Modal = ({closeModal, fetchCards}) => {
         event.preventDefault();
         fetchCards()
         
+        // Send the data to the backend
         fetch(`${import.meta.env.VITE_BACKEND_ADDRESS}/boards`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
